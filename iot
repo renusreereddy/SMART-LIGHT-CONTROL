@@ -1,0 +1,18 @@
+int relayPin = 7;
+
+void setup() {
+  pinMode(relayPin, OUTPUT);
+  Serial.begin(9600);
+  Serial.println("Send 1 to turn ON, 0 to turn OFF");
+}
+
+void loop() {
+  if (Serial.available()) {
+    char cmd = Serial.read();
+    if (cmd == '1') {
+      digitalWrite(relayPin, HIGH);  // Turn ON
+    } else if (cmd == '0') {
+      digitalWrite(relayPin, LOW);   // Turn OFF
+    }
+  }
+}
